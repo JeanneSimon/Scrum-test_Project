@@ -1,6 +1,6 @@
-# Exeamen blanc pour la certification Scrum Master de niveau 1
+# <span style="color: #5DADE2;">Exeamen blanc pour la certification Scrum Master de niveau 1</span>
 
-## Description :
+## <span style="color: #E59866;">Description :</span>
 Script BASH qui va nous permettre de lancer un test de 80 questions, qui retrounera au final le pourcentage de réussite ainsi que le nombre de bonnes et de fausses réponses.
 
 Dossier avec les questions à télécharger ainsi que le script "test_scrum.sh".  
