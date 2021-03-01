@@ -30,15 +30,22 @@ function menu {
 # Programme test blanc :
 function test_croissant {
     for ((i=1; i < 81; i++)); do
-        cat ~/test_scrum/questions/$i | grep -E "^\/"
-        echo "Entrez votre réponse :"
+	echo ""
+	echo "_______________________"
+        cat ~/Scrum-test_Project/questions/$i | grep -E "^\/"
+        echo "_______________________"
+	echo ""
+	echo "Entrez votre réponse :"
         read reponse
-        attendu=`tail -n 2 ~/test_scrum/questions/$i`
+        attendu=`tail -n 2 ~/Scrum-test_Project/questions/$i`
         if [ $reponse = $attendu ]; then
+	    echo ""
             echo "Bonne réponse !"
             vrai="$vrai+1"
-        else 
-            echo -e "Mauvaise réponse !\nLa réponse était : $attendu..."
+        else
+	    echo ""	
+	    echo "Mauvaise réponse !"
+	    echo "La bone réponse réponse : $attendu ..."
             faux="$faux+1"
         fi
     done
