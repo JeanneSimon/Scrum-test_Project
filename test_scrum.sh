@@ -30,7 +30,6 @@ function menu {
 # Programme test blanc :
 function test_croissant {
     for ((i=1; i < 81; i++)); do
-#        echo $i
         cat ~/test_scrum/questions/$i | grep -E "^\/"
         echo "Entrez votre réponse :"
         read reponse
