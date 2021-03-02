@@ -73,7 +73,7 @@ function test_aleatoire {
         echo "__________________________"
         echo ""
         # Saisie de la réponse
-        echo "Entrez votre réponse (ex: "A" ou "ACD") "
+        echo "Entrez votre réponse (ex: "A" ou "ACD") :"
         read reponse
         # Récupération et retour de la bonne réponse
         attendu=`tail -n 2 ~/Scrum-test_Project/questions/$valeur`
