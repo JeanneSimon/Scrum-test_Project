@@ -15,7 +15,7 @@ nb=`ls questions/ | wc -l` # nombre de questions dans le répertoire questions/
 vrai="" # nombre de bonnes réponses
 faux="" # nombre de mauvaises réponses
 score="" # pourcentage de bonnes réponses
-question="10" # nombre de questions dans le test
+question="" # nombre de questions dans le test
 indice="" # indice du tableau
 declare -a tableau # déclaration du tableau pour la fonction test aléatoire
 
@@ -26,39 +26,23 @@ function menu {
     echo "__________________________"
     echo "MENU TEST SCRUM"
     echo "1. Lancer un test blanc"
-    echo "2. Lancer un test blanc aléatoire"
     echo "Q. Quitter"
     read choixmenu
 }
-
-# Programme test blanc :
-function test_croissant {
-    for ((i=1; i < 81; i++)); do
-	echo ""
-	echo "_______________________"
-        cat ~/Scrum-test_Project/questions/$i | grep -E "^\/"
-        echo "_______________________"
-	echo ""
-	echo "Entrez votre réponse :"
-        read reponse
-        attendu=`tail -n 2 ~/Scrum-test_Project/questions/$i`
-        if [ $reponse = $attendu ]; then
-	    echo ""
-            echo "Bonne réponse !"
-            vrai="$vrai+1"
-        else
-	    echo ""	
-	    echo "Mauvaise réponse !"
-	    echo "La bone réponse réponse : $attendu ..."
-            faux="$faux+1"
-        fi
-    done
-    score=$(($(($vrai*100))/80))
-    echo -e "\nLe test blanc est terminé !\nVous avez fait un score de $score% ( vrai=$vrai et faux=$faux )."
+function menu_2 {
+    echo "__________________________"
+    echo "CHOIX DU TEST"
+    echo "1. Test de 10 questions"
+    echo "2. Test de 30 questions"
+    echo "3. Test de 80 quesions (standard)"
+    echo "4. Au choix"
+    echo "Q. Quitter"
+    read choixmenu2
 }
 
 #  Test aléatoire (paramètre = nb de questions totale du test):
 function test_aleatoire {
+    question=$1
     tableau=( $( seq 1 1 $nb ) )
     tableau=( $(shuf -e "${tableau[@]}") )
     for i in `seq 1 $question`
@@ -102,17 +86,38 @@ while true; do
     menu
     case $choixmenu in
         1)
-            test_croissant
-            ;;
-        2)
-            test_aleatoire
+            menu_2
+            case $choixmenu2 in
+                1)
+                    echo "Test de 10 questions"
+                    test_aleatoire 10
+                ;;
+                2)
+                    echo "Test de 30 questions"
+                    test_aleatoire 30
+                ;;
+                3)
+                    echo "Test de 80 questions"
+                    test_aleatoire 80
+                ;;
+                4)
+                    echo "nb de question au choix"
+                ;;
+                [Qq]*)
+                    echo "Bye !"
+                    break
+                ;;
+                *)
+                    echo "Erreur de saisi !"
+                ;;
+            esac
             ;;
         [Qq]*)
             echo "Casse toi !"
             exit 0
             ;;
         *)
-            echo "Erreur de saisi"
+            echo "Erreur de saisi !"
             ;;     
     esac
 done
