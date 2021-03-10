@@ -76,7 +76,7 @@ function test_aleatoire {
     done
 
     # Affichage du score
-    score=$(($(($vrai*100))/$nb))
+    score=$(($(($vrai*100))/$question))
     echo -e "\nLe test blanc est terminé !\nVous avez fait un score de $score% ( vrai=$vrai et faux=$faux )."
 }
 
@@ -101,7 +101,9 @@ while true; do
                     test_aleatoire 80
                 ;;
                 4)
-                    echo "nb de question au choix"
+                    echo "Combien de questions souhaitez-vous avoir dans le test ?"
+                    read nombre
+                    test_aleatoire $nombre
                 ;;
                 [Qq]*)
                     echo "Bye !"
