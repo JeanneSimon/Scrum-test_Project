@@ -69,14 +69,14 @@ function test_aleatoire {
         else
 	        echo ""	
 	        echo "Mauvaise réponse !"
-	        echo "La bone réponse réponse : $attendu ..."
+	        echo "La bonne réponse : $attendu ..."
             faux=$(($faux+1))
         fi
         # Supprimer la question du tableau
     done
 
     # Affichage du score
-    score=$(($(($vrai*100))/80))
+    score=$(($(($vrai*100))/$nb))
     echo -e "\nLe test blanc est terminé !\nVous avez fait un score de $score% ( vrai=$vrai et faux=$faux )."
 }
 
