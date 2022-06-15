@@ -28,6 +28,8 @@ function menu {
     echo "1. Lancer un test blanc"
     echo "Q. Quitter"
     read choixmenu
+    echo "__________________________"
+    clear
 }
 function menu_2 {
     echo "__________________________"
@@ -38,6 +40,8 @@ function menu_2 {
     echo "4. Au choix"
     echo "Q. Quitter"
     read choixmenu2
+    echo "__________________________"
+    clear
 }
 
 #  Test aléatoire (paramètre = nb de questions totale du test):
@@ -53,7 +57,7 @@ function test_aleatoire {
         # Affichage de la question 
         echo ""
         echo "__________________________"
-        cat ~/Scrum-test_Project/questions/$valeur | grep -E "^\/"
+        cat ./questions/$valeur | grep -E "^\/"
         echo "__________________________"
         echo ""
         # Saisie de la réponse
